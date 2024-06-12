@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Details</title>
+    <link rel="stylesheet" href="../client/style/main.css">
+    <link rel="stylesheet" href="../client/style/cart.css">
+</head>
+<body>
+
+<header class="header">
+    <nav class="nav grid ">
+        <div class="header__title">
+            <a href="index.html" class="">Triveni Sales</a>
+        </div>
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html#home" class="nav__link active">Home</a></li>
+                <li class="nav__item"><a href="index.html#featured" class="nav__link">Featured</a></li>
+                <li class="nav__item"><a href="index.html#new-products" class="nav__link">New Arrivals</a></li>
+                <li class="nav__item"><a href="product-list.html" class="nav__link">Products</a></li>
+                <li class="nav__item"><a href="contact-us.html" class="nav__link">Contact Us</a></li>
+                <li class="nav__item"><a href="login/login.html" class="nav__link">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="">
+            <ul class="nav__list">
+                <li class="nav__item">   <a href="cart-details.html">
+                    <i class="bx bx-cart nav__cart"></i>
+                </a></li>
+                <li class="nav__item">
+                    <a href="#" class="">
+                        <i class="bx bx-menu nav__toggle" id="nav-toggle"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="main-content">
+    <div class="grid">
+        <h1 class="section-title">Shopping Cart</h1>
+
+        <div class="cart-container">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Product 1</td>
+                    <td><input type="number" class="cart-quantity" value="1"></td>
+                    <td>$10.00</td>
+                    <td><span class="button-remove">
+                        <i class='bx bx-trash-alt'></i></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Product 2</td>
+                    <td><input type="number" class="cart-quantity" value="2"></td>
+                    <td>$20.00</td>
+                    <td><span class="button-remove">
+                        <i class='bx bx-trash-alt'></i></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <p>Subtotal: $30.00</p>
+                <p>Discount: $5.00</p>
+                <p>Delivery Charge: $2.00</p>
+                <p>Tax: $1.50</p>
+                <h2>Total: $28.50</h2>
+            </div>
+
+            <div class="cart-actions">
+                <a href="process-payment.html" class="button-primary">Proceed to Checkout</a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<section class="newsletter section" id="subscribed">
+    <div class="newsletter__container grid">
+        <div class="newsletter__subscribed">
+            <h2 class="section-title">OUR NEWSLETTER</h2>
+            <p class="newsletter__description">Stay updated with our latest offers and products</p>
+
+            <form action="" class="newsletter__form">
+                <input type="text" class="newsletter__input" placeholder="Enter your email">
+                <a href="#" class="button">SUBSCRIBE</a>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer__copy">
+        <p>&copy; 2024 Triveni Sales. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.button-remove').forEach(button => {
+        button.addEventListener('click', function() {
+            const row = this.closest('tr');
+            row.remove();
+            updateCartSummary();
+        });
+    });
+
+    function updateCartSummary() {
+        // Update the cart summary calculations here
+        // For example, update the subtotal, discount, delivery charge, tax, and total
+    }
+</script>
+
+</body>
+</html>

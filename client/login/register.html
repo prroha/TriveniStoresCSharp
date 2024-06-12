@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page - User Management</title>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../../client/views/style/main.css">
+<!--    <link rel="stylesheet" href="../../style/admin.css">-->
+</head>
+<body>
+<!-- Header -->
+
+<header class="header">
+    <nav class="nav grid ">
+        <div class="header__title">
+            <a href="../index.html" class="">Triveni Sales</a>
+        </div>
+    </nav>
+</header>
+
+<main class="main-content ">
+    <!--    <section id="user-management" class="section">-->
+    <div class="section-title">
+        <h2>Register</h2>
+    </div>
+    <div class="card">
+        <div class="w-400">
+            <form id="userForm" class="user-form ">
+                <div class="form-group ">
+                    <label for="fullName">Fullname</label>
+                    <input type="text" id="fullName" class="user-form__input form-control" placeholder="Enter your full name" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="user-form__input form-control" placeholder="Enter your username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="user-form__input form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select name="role" id="role">
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                        <option value="viewer">Viewer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" class="user-form__input form-control" placeholder="Enter password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Re-enter Password</label>
+                    <input type="text" id="password2" class="user-form__input form-control" placeholder="Re-enter password" name="password2" required>
+                </div>
+
+                <button type="submit" class="button">Register</button>
+
+                <div class="">
+                    <label >Already a User?</label>
+                </div>
+                <a href="../login/login.html" class="button">Login</a>
+            </form>
+        </div>
+    </div>
+    <!--    </section>-->
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userForm = document.getElementById('userForm');
+
+        // Function to store user data in local storage
+        function storeUserData(userData) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(userData);
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        userForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const fullName = userForm.fullName.value;
+            const username = userForm.username.value;
+            const password = userForm.password.value;
+            const password2 = userForm.password2.value;
+            const email = userForm.email.value;
+            const role = userForm.role.value;
+
+            // Validate password match
+            if (password !== password2) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // Create user object
+            const userData = {
+                fullName: fullName,
+                username: username,
+                password: password,
+                email: email,
+                role: role
+            };
+
+            // Store user data
+            storeUserData(userData);
+
+            // Reset form
+            userForm.reset();
+
+            window.location.href = '../login/login.html';
+        });
+
+    });
+
+</script>
+</body>
+</html>
